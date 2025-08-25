@@ -1,7 +1,11 @@
+import tailwindcss from '@tailwindcss/vite';
 import vue from '@vitejs/plugin-vue';
 import laravel from 'laravel-vite-plugin';
-import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vite';
+
+// 🔥 Add these
+import MotionResolver from 'motion-v/resolver';
+import Components from 'unplugin-vue-components/vite';
 
 export default defineConfig({
     plugins: [
@@ -18,6 +22,12 @@ export default defineConfig({
                     includeAbsolute: false,
                 },
             },
+        }),
+
+        // 🔥 Motion auto-import support
+        Components({
+            dts: true,
+            resolvers: [MotionResolver()],
         }),
     ],
 });
