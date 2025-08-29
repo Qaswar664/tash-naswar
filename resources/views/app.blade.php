@@ -31,7 +31,31 @@
         }
     </style>
 
-    <title inertia>{{ config('app.name', 'Laravel') }}</title>
+    {{-- Dynamic Page Title --}}
+    <title inertia>{{ config('app.name', 'Tash Naswar Online Store') }}</title>
+
+    {{-- SEO Meta Description (default, can be overridden per-page with Inertia) --}}
+    <meta name="description"
+        content="Buy premium Tash Naswar online with fast delivery in Pakistan. Fresh, authentic, and hygienically packed Naswar available in bulk and retail." />
+
+    {{-- SEO Keywords (optional, less important for Google but useful for other engines) --}}
+    <meta name="keywords"
+        content="Tash Naswar, buy Naswar online, fresh naswar Pakistan, naswar delivery, original naswar" />
+
+    {{-- Open Graph for Social Media --}}
+    <meta property="og:title" content="Tash Naswar Online Store" />
+    <meta property="og:description"
+        content="Order authentic Tash Naswar online – hygienic, fresh, and delivered to your doorstep across Pakistan." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ url()->current() }}" />
+    <meta property="og:image" content="{{ asset('images/og-naswar.jpg') }}" />
+
+    {{-- Twitter Card --}}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tash Naswar Online Store">
+    <meta name="twitter:description"
+        content="Premium quality Naswar online in Pakistan. Hygienically packed & delivered fast.">
+    <meta name="twitter:image" content="{{ asset('images/og-naswar.jpg') }}">
 
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
