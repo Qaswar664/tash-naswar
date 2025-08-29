@@ -3,6 +3,7 @@ import { Head, Link } from '@inertiajs/vue3';
 import AppHeader from '@/components/AppHeader.vue';
 import { ref, reactive, onMounted, onBeforeUnmount } from 'vue';
 import { BriefcaseIcon } from '@heroicons/vue/24/solid';
+import { motion } from 'motion-v';
 
 // Slider state
 const currentSlide = ref(0);
@@ -11,28 +12,28 @@ const slides = [
     {
         id: 1,
         title: 'خوشبودار نسوار',
-        buttonImage: '/images/read-more.png',
-        // image: '/images/red-pack.png',
-        image: '/images/red-pack-img.png',
-        bgImage: '/images/red-banner.png',
+        buttonImage: '/images/read-more.webp',
+        // image: '/images/red-pack.webp',
+        image: '/images/red-pack-img.webp',
+        bgImage: '/images/red-banner.webp',
         buttonText: 'Read More',
     },
     {
         id: 2,
         title: 'سخت نسوار',
-        buttonImage: '/images/read-more.png',
-        // image: '/images/blue-pack.png',
-        image: '/images/blue-pack-img.png',
-        bgImage: '/images/blue-banner.png',
+        buttonImage: '/images/read-more.webp',
+        // image: '/images/blue-pack.webp',
+        image: '/images/blue-pack-img.webp',
+        bgImage: '/images/blue-banner.webp',
         buttonText: 'Read More',
     },
     {
         id: 3,
         title: 'سادہ نسوار',
-        buttonImage: '/images/read-more.png',
-        // image: '/images/green-pack-resize.png',
-        image: '/images/green-pack-img.png',
-        bgImage: '/images/green-banner.png',
+        buttonImage: '/images/read-more.webp',
+        // image: '/images/green-pack-resize.webp',
+        image: '/images/green-pack-img.webp',
+        bgImage: '/images/green-banner.webp',
         buttonText: 'Read More',
     },
 ];
@@ -42,63 +43,63 @@ const products = [
         id: 1,
         name: 'TASH COOL MINT',
         subtitle: 'Pure Mint, Pure Freshness',
-        image: '/images/blue-pack-img.png',
+        image: '/images/blue-pack-img.webp',
         color: 'blue',
     },
     {
         id: 2,
         name: 'TASH EXTRA STRONG',
         subtitle: 'Extra Strength, Extra Cool',
-        image: '/images/green-pack-img.png',
+        image: '/images/green-pack-img.webp',
         color: 'green',
     },
     {
         id: 3,
         name: 'TASH CLASSIC',
         subtitle: 'Best Classic Taste and Kick',
-        image: '/images/red-pack-img.png',
+        image: '/images/red-pack-img.webp',
         color: 'red',
     },
     {
         id: 4,
         name: 'TASH COOL MINT 2',
         subtitle: 'Pure Mint, Pure Freshness',
-        image: '/images/blue-pack-img.png',
+        image: '/images/blue-pack-img.webp',
         color: 'blue',
     },
     {
         id: 5,
         name: 'TASH EXTRA STRONG 2',
         subtitle: 'Extra Strength, Extra Cool',
-        image: '/images/green-pack-img.png',
+        image: '/images/green-pack-img.webp',
         color: 'green',
     },
     {
         id: 6,
         name: 'TASH CLASSIC 2',
         subtitle: 'Best Classic Taste and Kick',
-        image: '/images/red-pack-img.png',
+        image: '/images/red-pack-img.webp',
         color: 'red',
     },
     {
         id: 7,
         name: 'TASH COOL MINT 3',
         subtitle: 'Pure Mint, Pure Freshness',
-        image: '/images/blue-pack-img.png',
+        image: '/images/blue-pack-img.webp',
         color: 'blue',
     },
     {
         id: 8,
         name: 'TASH EXTRA STRONG 3',
         subtitle: 'Extra Strength, Extra Cool',
-        image: '/images/green-pack-img.png',
+        image: '/images/green-pack-img.webp',
         color: 'green',
     },
     {
         id: 9,
         name: 'TASH CLASSIC 3',
         subtitle: 'Best Classic Taste and Kick',
-        image: '/images/red-pack-img.png',
+        image: '/images/red-pack-img.webp',
         color: 'red',
     },
 ];
@@ -125,9 +126,9 @@ const loaded = reactive<Record<number | string, boolean>>({});
 
 // preload list (bg + product + misc)
 const preloadSources: string[] = [
-    '/images/read-more.png',
-    '/images/price-img.png',
-    '/images/order-now.png',
+    '/images/read-more.webp',
+    '/images/price-img.webp',
+    '/images/order-now.webp',
     // add product placeholders if you want them preloaded too
 ];
 
@@ -210,12 +211,12 @@ const goToSlide = (index: number) => {
         <link rel="preconnect" href="https://rsms.me/" />
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
         <!-- Keep browser-level preloads (helpful) -->
-        <link rel="preload" href="/images/red-banner.png" as="image" />
-        <link rel="preload" href="/images/blue-banner.png" as="image" />
-        <link rel="preload" href="/images/green-banner.png" as="image" />
-        <link rel="preload" href="/images/read-more.png" as="image" />
-        <link rel="preload" href="/images/price-img.png" as="image" />
-        <link rel="preload" href="/images/order-now.png" as="image" />
+        <link rel="preload" href="/images/red-banner.webp" as="image" />
+        <link rel="preload" href="/images/blue-banner.webp" as="image" />
+        <link rel="preload" href="/images/green-banner.webp" as="image" />
+        <link rel="preload" href="/images/read-more.webp" as="image" />
+        <link rel="preload" href="/images/price-img.webp" as="image" />
+        <link rel="preload" href="/images/order-now.webp" as="image" />
     </Head>
 
     <div class="home min-h-screen bg-white">
@@ -269,14 +270,15 @@ const goToSlide = (index: number) => {
                                     <Transition name="fade" mode="out-in">
                                         <img :key="`product-${currentSlide}`" :src="slides[currentSlide].image"
                                             alt="Product" class="w-full h-full object-contain rounded-xl" width="300"
-                                            height="375" loading="eager" />
+                                            height="375" loading="lazy" />
+
                                     </Transition>
 
                                     <!-- Price Tag -->
                                     <Transition name="fade" mode="out-in">
                                         <div :key="`price-${currentSlide}`"
                                             class="absolute top-0 sm:-top-4 -left-4 h-[80px] w-[100px] bg-no-repeat bg-contain bg-center"
-                                            :style="{ backgroundImage: `url(/images/price-img.png)` }">
+                                            :style="{ backgroundImage: `url(/images/price-img.webp)` }">
                                             <div
                                                 class="absolute inset-0 flex items-center justify-center transform -rotate-12 text-black">
                                                 <span class="flex items-center">
@@ -297,34 +299,38 @@ const goToSlide = (index: number) => {
             <!-- Order Now Button (outside of any transform animation) -->
             <div class="fixed bottom-20 right-4 md:right-78 z-50">
                 <Link href="/order">
-                <img src="/images/order-now.png" alt="Order Now"
+                <img src="/images/order-now.webp" alt="Order Now"
                     class="w-20 h-20 sm:w-20 sm:h-20 md:w-28 md:h-28 rounded-full hover:scale-110 transition"
                     width="160" height="160" loading="eager" />
                 </Link>
             </div>
         </section>
 
-        <!-- Welcome Section -->
-        <section class="bg-black text-white py-4 sm:py-8  w-full flex items-center justify-center">
+        <!-- Welcome Section with Motion Animation -->
+        <motion.section class="bg-black text-white py-4 sm:py-8 w-full flex items-center justify-center"
+            :initial="{ opacity: 0, y: 50 }" :whileInView="{ opacity: 1, y: 0 }"
+            :transition="{ duration: 0.8, ease: 'easeOut' }" :viewport="{ once: true }">
             <div class="container mx-auto px-4 md:max-w-4xl 2xl:max-w-6xl text-center">
-
                 <h2 class="text-xl md:text-2xl font-bold mb-6">WELCOME TO TASH NASWAR</h2>
-                <p class="max-w-xl text-sm md:text-base mx-auto text-gray-300 leading-relaxed ">
+                <p class="max-w-xl 2xl:max-w-2xl 2xl:mb-4 text-sm md:text-base mx-auto text-gray-300 leading-relaxed ">
                     TASH is more than just a brand - it's a bold fusion of tradition, quality, and
                     modern innovation. We haven't just produced Naswar - we've redefined it for the
                     needs of today's market.
                 </p>
             </div>
-        </section>
+        </motion.section>
 
-        <section class="relative overflow-hidden py-8 bg-white">
+        <!-- Features Section with Motion Animation -->
+        <motion.section class="relative overflow-hidden py-8 bg-white" :initial="{ opacity: 0, y: 50 }"
+            :whileInView="{ opacity: 1, y: 0 }" :transition="{ duration: 0.8, ease: 'easeOut', delay: 0.2 }"
+            :viewport="{ once: true }">
             <div class="container mx-auto px-4 md:max-w-4xl 2xl:max-w-6xl relative z-10">
 
                 <div
                     class="flex flex-col sm:flex-row justify-between items-center gap-10 md:gap-16  py-12 sm:py-8 lg:py-0 px-0 md:px-28 font-semibold text-sm md:text-base text-center sm:text-left">
                     <div class="flex items-center justify-center sm:justify-start">
-                        <img src="/images/Brain-img.png" alt="Heading Left" class="w-16 h-16 sm:w-20 sm:h-20"
-                            loading="lazy" />
+                        <img src="/images/Brain-img.webp" alt="Heading Left"
+                            class="w-16 h-16 sm:w-20 sm:h-20 aspect-square object-contain" loading="lazy" />
                         <h5 class="ml-4">
                             <span class="hidden md:block">State-of-the-Art<br>Facility</span>
                             <span class="block md:hidden">State-of-the-Art Facility</span>
@@ -332,8 +338,8 @@ const goToSlide = (index: number) => {
                     </div>
 
                     <div class="flex items-center justify-center sm:justify-start">
-                        <img src="/images/Box-img.png" alt="Heading Right" class="w-16 h-16 sm:w-20 sm:h-20"
-                            loading="lazy" />
+                        <img src="/images/Box-img.webp" alt="Heading Right"
+                            class="w-16 h-16 sm:w-20 sm:h-20 aspect-square object-contain" loading="lazy" />
                         <h5 class="ml-4">
                             <span class="hidden md:block">Food-Grade<br>Packaging</span>
                             <span class="block md:hidden">Food-Grade Packaging</span>
@@ -343,23 +349,25 @@ const goToSlide = (index: number) => {
 
                 <div class="flex  justify-center items-center gap-2 mt-0">
                     <div class="h-[1px] w-full bg-[#ECECEC]"></div>
-                    <img src="/images/leaf.png" alt="leaf" class="w-16 h-16  object-contain" />
+                    <img src="/images/leaf.webp" alt="leaf" class="w-16 h-16  object-contain" />
                     <div class="h-[1px] w-full bg-[#ECECEC]"></div>
                 </div>
             </div>
 
-            <img src="/images/leaves-img.png" alt="Leaf" loading="eager" width="192" height="192"
+            <img src="/images/leave-img.webp" alt="Leaf" loading="eager" width="192" height="192"
                 class="absolute -top-20 right-0 rotate-6 z-0" />
-        </section>
+        </motion.section>
 
 
-        <section class="py-4">
+        <!-- Products Section with Motion Animation -->
+        <motion.section class="py-4" :initial="{ opacity: 0, y: 50 }" :whileInView="{ opacity: 1, y: 0 }"
+            :transition="{ duration: 0.8, ease: 'easeOut', delay: 0.4 }" :viewport="{ once: true }">
             <div class="container mx-auto md:max-w-4xl 2xl:max-w-6xl">
                 <!-- Section Header -->
                 <div class=" flex justify-center items-end font-bold text-gray-800">
-                    <img class="w-12 h-auto pr-4" src="/images/leaf-icon.png" alt="leaf" />
+                    <img class="w-12 h-auto pr-4" src="/images/leaf-icon.webp" alt="leaf" />
                     <h5 class="leading-tight md:leading-none text-base md:text-2xl">BOLD FLAVOUR. TRUE TRADITION</h5>
-                    <img class="w-12 h-auto pl-4" src="/images/sparrow-icon.png" alt="leaf" />
+                    <img class="w-12 h-auto pl-4" src="/images/sparrow-icon.webp" alt="leaf" />
                 </div>
 
                 <!-- Products Slider -->
@@ -370,16 +378,25 @@ const goToSlide = (index: number) => {
                         <div v-for="(group, groupIndex) in productSlides" :key="groupIndex"
                             class="w-full flex-shrink-0 px-4">
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-[2px] ">
-                                <div v-for="product in group" :key="product.id" class="text-center mb-8 md:mb-0">
+                                <motion.div v-for="product in group" :key="product.id" class="text-center mb-8 md:mb-0"
+                                    :initial="{ opacity: 0, scale: 0.9 }" :whileInView="{ opacity: 1, scale: 1 }"
+                                    :transition="{ duration: 0.5, delay: (product.id % 3) * 0.2 }"
+                                    :viewport="{ once: true }">
                                     <div class="mb-4 md:mb-6">
-                                        <div class="w-full flex md:h-[290px] lg:h-[340px]  overflow-visible">
+                                        <!-- <div class="w-full flex md:h-[290px] lg:h-[340px]  overflow-visible">
                                             <img :src="product.image"
                                                 class="h-auto max-h-full  w-full  shadow-[0px_50px_35px_-50px_rgba(0,_0,_0,_0.8)]" />
+                                        </div> -->
+                                        <div
+                                            class="w-full flex aspect-[1240/1500] md:h-[290px] lg:h-[340px] 2xl:h-[440px] overflow-visible">
+                                            <img :src="product.image"
+                                                class="w-full h-full object-cover shadow-[0px_50px_35px_-50px_rgba(0,_0,_0,_0.8)]" alt="{{ product.name }}" />
                                         </div>
+
                                     </div>
                                     <h3 class="font-bold text-base md:text-lg mb-2">{{ product.name }}</h3>
                                     <p class="text-gray-600 text-sm">{{ product.subtitle }}</p>
-                                </div>
+                                </motion.div>
                             </div>
                         </div>
                     </div>
@@ -398,20 +415,22 @@ const goToSlide = (index: number) => {
                 </div>
                 <div class="flex  justify-center items-center gap-2 py-8 md:py-12">
                     <div class="h-[1px] w-full bg-[#ECECEC]"></div>
-                    <img src="/images/leaf.png" alt="leaf" class="w-16 h-16  object-contain" />
+                    <img src="/images/leaf.webp" alt="leaf" class="w-16 h-16  object-contain" />
                     <div class="h-[1px] w-full bg-[#ECECEC]"></div>
                 </div>
                 <!-- Product grains -->
                 <div class="relative">
-                    <img src="/images/grain.png" alt="Product Grain"
+                    <img src="/images/grain.webp" alt="Product Grain"
                         class="absolute -left-[150px] -top-[240px] -translate-x-1/2 w-full h-[240px] object-contain z-10" />
                 </div>
             </div>
-        </section>
+        </motion.section>
 
 
-        <!-- Footer -->
-        <footer class="pb-8 md:pb-0 md:py-12">
+        <!-- Footer with Motion Animation -->
+        <motion.footer class="pb-8 md:pb-0 md:py-12" :initial="{ opacity: 0, y: 50 }"
+            :whileInView="{ opacity: 1, y: 0 }" :transition="{ duration: 0.8, ease: 'easeOut', delay: 0.6 }"
+            :viewport="{ once: true }">
             <div class="container mx-auto px-4 md:max-w-4xl 2xl:max-w-6xl">
                 <!-- Responsive grid with equal borders -->
                 <div
@@ -428,17 +447,17 @@ const goToSlide = (index: number) => {
                     <div class="pt-4 sm:pt-0 sm:px-4">
                         <h3 class="font-semibold mb-4 text-sm md:text-base">SOCIAL NETWORK</h3>
                         <div class="flex space-x-3">
-                            <a href="https://www.facebook.com/profile.php?id=61577898473844"
+                            <a href="#"
                                 class=" rounded-full flex items-center justify-center hover:bg-blue-700 transition">
-                                <img src="/images/facebook.png" alt="Facebook" class="w-8 h-8" />
+                                <img src="/images/facebook.webp" alt="Facebook" class="w-8 h-8" />
                             </a>
-                            <a href="https://www.instagram.com/alphatobaccopk/"
+                            <a href="#"
                                 class=" rounded-full flex items-center justify-center hover:bg-pink-700 transition">
-                                <img src="/images/instagram.png" alt="Instagram" class="w-8 h-8" />
+                                <img src="/images/instagram.webp" alt="Instagram" class="w-8 h-8" />
                             </a>
-                            <a href="https://www.linkedin.com/company/alphatobaccopk"
+                            <a href="#"
                                 class=" rounded-full flex items-center justify-center hover:bg-blue-600 transition">
-                                <img src="/images/linkedin.png" alt="LinkedIn" class="w-8 h-8" />
+                                <img src="/images/linkedin.webp" alt="LinkedIn" class="w-8 h-8" />
                             </a>
                         </div>
                     </div>
@@ -475,7 +494,7 @@ const goToSlide = (index: number) => {
 
 
             </div>
-        </footer>
+        </motion.footer>
         <!-- Bottom Footer -->
         <div class="border-t border-[#ECECEC] mt-4 md:mt-8 py-4 text-center">
             <p class="text-xs  ">
@@ -486,7 +505,7 @@ const goToSlide = (index: number) => {
         <div class="relative">
             <a href="https://wa.me/923221111611" target="_blank"
                 class="absolute bottom-12 md:bottom-8 right-8 z-50 flex items-center space-x-2">
-                <img src="/images/whatsapp.png" alt="WhatsApp"
+                <img src="/images/whatsapp.webp" alt="WhatsApp"
                     class="w-16 h-16 m-0 object-contain absolute right-20 rounded-full border border-white shadow-md" />
                 <!-- Text -->
                 <div class="text-xs text-white bg-gray-800 rounded-r-2xl py-2 pl-4 pr-2">
@@ -494,8 +513,11 @@ const goToSlide = (index: number) => {
                 </div>
             </a>
         </div>
-        <section class="relative h-[200px] w-full bg-center  bg-cover bg-no-repeat"
-            style="background-image: url('/images/biscut.png');">
+        <!-- Warning Section with Motion Animation -->
+        <motion.section class="relative h-[200px] w-full bg-center  bg-cover bg-no-repeat"
+            style="background-image: url('/images/biscut.webp');" :initial="{ opacity: 0, y: 50 }"
+            :whileInView="{ opacity: 1, y: 0 }" :transition="{ duration: 0.8, ease: 'easeOut', delay: 0.8 }"
+            :viewport="{ once: true }">
             <div class="h-full w-full bg-black/50 flex  justify-center text-center">
                 <h2 class="text-white text-xs py-6 px-4">
                     <span class="text-red-600 text-sm">Warning:</span> This product contains nicotine, which is
@@ -505,7 +527,7 @@ const goToSlide = (index: number) => {
                     adults only.
                 </h2>
             </div>
-        </section>
+        </motion.section>
     </div>
 </template>
 
