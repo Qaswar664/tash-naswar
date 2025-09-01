@@ -207,7 +207,7 @@ const goToSlide = (index: number) => {
 
 <template>
 
-    <Head title="Tash Naswar - Home">
+    <Head >
         <link rel="preconnect" href="https://rsms.me/" />
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
         <!-- Keep browser-level preloads (helpful) -->
