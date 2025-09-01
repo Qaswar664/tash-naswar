@@ -207,7 +207,7 @@ const goToSlide = (index: number) => {
 
 <template>
 
-    <Head title="Welcome">
+    <Head title="Tash Naswar - Home">
         <link rel="preconnect" href="https://rsms.me/" />
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
         <!-- Keep browser-level preloads (helpful) -->
@@ -390,7 +390,8 @@ const goToSlide = (index: number) => {
                                         <div
                                             class="w-full flex aspect-[1240/1500] md:h-[290px] lg:h-[340px] 2xl:h-[440px] overflow-visible">
                                             <img :src="product.image"
-                                                class="w-full h-full object-cover shadow-[0px_50px_35px_-50px_rgba(0,_0,_0,_0.8)]" alt="{{ product.name }}" />
+                                                class="w-full h-full object-cover shadow-[0px_50px_35px_-50px_rgba(0,_0,_0,_0.8)]"
+                                                alt="{{ product.name }}" />
                                         </div>
 
                                     </div>
