@@ -1,0 +1,1 @@
+import{_ as n}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{a as r,o as t,b as o}from"./app-CjIs-FcR.js";const a={};function s(c,e){return t(),r("div",null,e[0]||(e[0]=[o("h1",null,"Home page",-1),o("p",null,"Manage your account settings here.",-1)]))}const u=n(a,[["render",s]]);export{u as default};
